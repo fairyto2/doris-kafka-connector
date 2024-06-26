@@ -23,7 +23,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericRecord;
@@ -80,14 +79,14 @@ public class DorisAvroConverterTest {
         SchemaAndValue schemaAndValue = avroConverter.toConnectData("user-topic", userAvroData);
         Object o = schemaAndValue.value();
 
-        Assert.assertEquals(o,"{\"id\": 1, \"name\": \"test\", \"age\": 18}");
+        Assert.assertEquals(o, "{\"id\": 1, \"name\": \"test\", \"age\": 18}");
     }
 
     private byte[] generateUserRecord(Schema userSchema) throws IOException {
         GenericData.Record userRecord = new GenericData.Record(userSchema);
-        userRecord.put("id",1);
-        userRecord.put("name","test");
-        userRecord.put("age",18);
+        userRecord.put("id", 1);
+        userRecord.put("name", "test");
+        userRecord.put("age", 18);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         BinaryEncoder encoder = EncoderFactory.get().binaryEncoder(outputStream, null);
         DatumWriter<GenericRecord> writer = new SpecificDatumWriter<GenericRecord>(userSchema);
