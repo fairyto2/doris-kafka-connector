@@ -1,0 +1,9 @@
+header:
+  license:
+    spdx-id: Apache-2.0
+    copyright-owner: Apache Software Foundation
+
+  paths-ignore:
+    - 'src/test/resources/decode/avro/**'
+
+  comment: on-failure
